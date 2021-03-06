@@ -8,11 +8,11 @@ from datetime import datetime
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-class user(UserMixin, db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer,primary_key=True)
-    username = db.Column(db.String(255),index=True)
-    email = db.Column(db.String(255),unique = True,index = True)
+    username = db.Column(db.String(255))
+    email = db.Column(db.String(255),unique = True)
     role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
@@ -37,7 +37,7 @@ class user(UserMixin, db.Model):
 class Role(db.Model):
     __tablename__ = 'roles'
     id = db.Column(db.Integer,primary_key = True)
-    name = db.Column(db.string(255))
+    name = db.Column(db.String(255))
     users = db.relationship('User', backref = 'role', lazy='dynamic')
 
     def __repr__(self):

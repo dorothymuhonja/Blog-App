@@ -5,12 +5,13 @@ from .forms import RegistrationForm, LoginForm
 from .. import db
 from . import auth
 from ..email import mail_message
+from werkzeug.security import generate_password_hash
 
-@auth.route('register',methods= ['GET', 'POST'])
+@auth.route('/register',methods= ['GET', 'POST'])
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(email=form.email.data, username=form.username.data,pass_secure=form.password.data)
+        user = User(email=form.email.data, username=form.username.data,pass_secure=generate_password_hash(form.password.data))
 
         db.session.add(user)
         db.session.commit()
@@ -19,11 +20,11 @@ def register():
 
         flash('Account created successfully')
 
-        return redirect(url_for('aurh.login'))
+        return redirect(url_for('auth.login'))
         title = 'New Account'
     return renser_template('auth/register.html',registration_form=form)
 
-@auth.route('/login', method=['GET','POST'])
+@auth.route('/login', methods=['GET','POST'])
 def login():
     login_form = LoginForm()
     if login_form.validate_on_submit():
@@ -35,7 +36,7 @@ def login():
         flash('Invalid username or password')
 
     title = 'Blog login'
-    return render_template('auth/login.html', login_form,title=title)
+    return render_template('auth/login.html', login_form=login_form,title=title)
 
 @auth.route('/logout')
 @login_required
