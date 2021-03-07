@@ -44,7 +44,7 @@
                     <h2 class="h6 pb-1"><i class="fas fa-user-cog"></i> {{user.username| capitalize}} </h2>
                 </a>
 
-                <h4 class="h4 mb-4" style='text-decoration:underline;'>My Bio...</h4>
+                <h4 class="h4 mb-4" style='text-decoration:underline;'>My Bio</h4>
 
                 {% if user.bio %}
 
@@ -60,6 +60,7 @@
                 {% if user == current_user %}
 
                 <div>
+                   
                     <h5 style='text-decoration:underline;'>Update Profile Picture </h5>
                     <form action="{{url_for('main.update_pic',uname=user.username)}}" method="post"
                         enctype="multipart/form-data">
@@ -77,7 +78,7 @@
     </div>
     <!-- News jumbotron -->
 
-    <h2 class='amber-text' style='text-decoration:underline;'>My Blogs</h2>
+    <h2 class='amber-text'>My Blogs</h2>
     {% if current_user %}
     {% for items in blog[::-1] %}
 
@@ -89,7 +90,7 @@
                 <div class="card card-cascade wider">
 
                     <!-- Card image -->
-                    <div class="view view-cascade gradient-card-header peach-gradient">
+                    <div>
 
                         <!-- Title -->
                         <h4 class="card-header-title mb-3 ml-3">{{items.title| capitalize}}</h4>
@@ -98,7 +99,7 @@
                         </p>
 
                     </div>
-
+                    <hr>
                     <!-- Card content -->
                     <div class="card-body card-body-cascade">
 
