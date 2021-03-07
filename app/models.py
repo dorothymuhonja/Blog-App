@@ -8,31 +8,31 @@ from datetime import datetime
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-class User(UserMixin, db.Model):
+class User(db.Model,UserMixin):
     __tablename__ = 'users'
     id = db.Column(db.Integer,primary_key=True)
-    username = db.Column(db.String(255))
+    username = db.Column(db.String(255), unique=True)
     email = db.Column(db.String(255),unique = True)
     role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
+    pass_secure = db.Column(db.String(255))
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
-    pass_secure = db.Column(db.String(255))
-    blogs = db.relationship('Blog',backref = 'blogger',lazy = "dynamic")
+    blogs = db.relationship('Blog',backref = 'blogger',lazy = 'dynamic')
     comments = db.relationship('Comment',backref = 'feedback',lazy = "dynamic")
 
     @property
     def password(self):
         raise AttributeError('You cannot read the password attribute')
 
-    @password.setter
-    def password(self,password):
-        self.pass_secure = generate_password_hash(password)
-
     def verify_password(self,password):
         return check_password_hash(self.pass_secure,password)
 
     def __repr__(self):
         return f'User {self.username}'
+
+    def save_user(self):
+        db.session.add(self)
+        db.session.commit()
 
 class Role(db.Model):
     __tablename__ = 'roles'
@@ -41,7 +41,7 @@ class Role(db.Model):
     users = db.relationship('User', backref = 'role', lazy='dynamic')
 
     def __repr__(self):
-        return f'User(self.name)'
+        return f'User{self.name}'
 
 class Blog(db.Model):
     __tablename__ = 'blogs'

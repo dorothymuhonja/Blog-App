@@ -16,7 +16,6 @@ def register():
         db.session.add(user)
         db.session.commit()
 
-        mail_message('Welcome to Blogs', 'email/welcome_user', user.email,user=user)
 
         flash('Account created successfully')
 

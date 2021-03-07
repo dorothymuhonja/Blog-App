@@ -1,6 +1,7 @@
 from flask import render_template,request,redirect,url_for,abort,flash
 from . import main
 from .forms import BlogForm,BioForm, CommentForm
+from ..models import Blog,User,Comment,Role
 from flask_login import login_required,current_user
 from .. import db,photos
 from ..request import get_quote
@@ -36,13 +37,13 @@ def new_blog():
     if form.validate_on_submit():
         blog = form.blog.data
         title = form.title.data
-        new_blog=Blog(blog=blog,title=title,user_id=current_user.id)
+        new_blog= Blog(blog=blog,title=title,user_id=current_user.id)
         
         new_blog.save_blog()
         
         return redirect(url_for('main.index'))
     
-    return render_template('blogs.html', form=form,legend='New Post')
+    return render_template('blogs.html', form=form,legend='New Blog')
         
 @main.route('/comments/<int:blog_id>', methods=['GET','POST'])
 @login_required

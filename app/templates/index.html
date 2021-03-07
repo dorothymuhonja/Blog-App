@@ -66,12 +66,12 @@
                         <p class="font-weight-normal">by <a><strong>{{ items.blogger.username }}</strong></a>, {{
                             items.posted.strftime('%d-%m-%Y') }}</p>
 
-                        <a href="{{url_for(' main.new_comment', blog_id=items.id)}}" class="btn btn-default btn-sm"><i
+                        <a href="{{url_for('main.new_comment', blog_id=items.id)}}" class="btn btn-default btn-sm"><i
                                 class="far fa-comments fa-2x"></i> <span style='font-size:14px;'>Comments</span></a>
 
                         {% if items.blogger == current_user %}
 
-                        <a href="{{url_for(' main.update_blog', blog_id=items.id)}}" class="btn btn-default btn-sm"><span
+                        <a href="{{url_for('main.update_blog', blog_id=items.id)}}" class="btn btn-default btn-sm"><span
                                 style='font-size:14px;'>Update</span></a>
 
                         <a href='' data-toggle="modal" data-target="#deleteModalCenter" class="btn btn-default btn-sm"><i
@@ -108,7 +108,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <form action="{{url_for(' main.delete', blog_id=items.id)}}" method='POST'>
+                    <form action="{{url_for('main.delete', blog_id=items.id)}}" method='POST'>
                         <input class='btn btn-danger btn-sm' type='submit' value='Delete Blog'>
                     </form>
                 </div>
@@ -123,7 +123,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="page-footer font-small teal pt-4">
+    <footer class="page-footer font-small teal pt-4 navbar navbar-dark bg-dark">
 
         <!-- Footer Elements -->
         <div class="container">

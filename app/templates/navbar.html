@@ -1,4 +1,4 @@
-<nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
+<nav class="mb-1 navbar navbar-expand-lg navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="/">BLOG QUOTES</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
         aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,7 +34,7 @@
 
             {% else %}
             <li class="nav-item">
-                <a class="nav-link" href="{{url_for('auth.login')}}">
+                <a class="nav-link" href="{{url_for('auth.login')}}" style="color: black;">
                     <i class="fab fa-sign-in" aria-hidden="true"></i> Sign-In</a>
             </li>
 
