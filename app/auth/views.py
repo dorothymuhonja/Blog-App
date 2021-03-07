@@ -22,7 +22,7 @@ def register():
 
         return redirect(url_for('auth.login'))
         title = 'New Account'
-    return renser_template('auth/register.html',registration_form=form)
+    return render_template('auth/register.html',registration_form=form)
 
 @auth.route('/login', methods=['GET','POST'])
 def login():
