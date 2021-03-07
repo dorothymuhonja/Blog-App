@@ -60,12 +60,12 @@
                 {% if user == current_user %}
 
                 <div>
-                   
-                    <h5 style='text-decoration:underline;'>Update Profile Picture </h5>
+                   <br>
+                    <h5>Update Profile Picture </h5>
                     <form action="{{url_for('main.update_pic',uname=user.username)}}" method="post"
                         enctype="multipart/form-data">
                         <input type="file" name="photo" class="form-group" required><br>
-                        <input class='form-group' type='submit'>
+                        <input class='form-group btn btn-secondary ' type='submit'>
                     </form>
                 </div>
                 {% endif %}
@@ -78,7 +78,7 @@
     </div>
     <!-- News jumbotron -->
 
-    <h2 class='amber-text'>My Blogs</h2>
+    <h2 style="margin-left: 35%;"><strong>My Blogs</strong></h2>
     {% if current_user %}
     {% for items in blog[::-1] %}
 
@@ -87,19 +87,19 @@
             <div class='col-sm-9 col-md-10 col-lg-10'>
 
                 <!-- Card -->
-                <div class="card card-cascade wider">
+                <div class="card card-cascade wider text-center" style="background-color: rgb(141, 133, 133);">
 
                     <!-- Card image -->
                     <div>
 
                         <!-- Title -->
-                        <h4 class="card-header-title mb-3 ml-3">{{items.title| capitalize}}</h4>
+                        <h4 class="card-header-title mb-3 ml-3" style="margin-top: 15px;"><strong>{{items.title}}</strong></h4>
                         <!-- Text -->
                         <p class="mb-0 ml-3"><i class="fas fa-calendar mr-2"></i>{{items.posted.strftime('%Y-%m-%d')}}
                         </p>
 
                     </div>
-                    <hr>
+                    <hr style="border-top: 1px solid rgb(83, 79, 79);">
                     <!-- Card content -->
                     <div class="card-body card-body-cascade">
 
@@ -107,7 +107,7 @@
                         <h5 class="text-dark ml-1">{{items.blog}}</h5>
                         <!-- Link -->
                         <a href="{{url_for('main.new_comment', blog_id = items.id)}}"
-                            class="orange-text d-flex flex-row-reverse p-2">
+                            class="purple-text d-flex flex-row-reverse p-2">
                             <h6 class="waves-effect waves-light">Comments<i class="far fa-comments ml-2"></i></h6>
                         </a>
 
@@ -123,7 +123,7 @@
     <br>
     {% else%}
 
-    <h4 class='text-center'>You have no pitches </h4>
+    <h4 class='text-center'>You haven't posted a Blog </h4>
 
     {% endfor %}
     {% endif %}

@@ -1,17 +1,18 @@
 {% include 'base.html' %}
 <br>
 <br>
+
 {% block content %}
-   <div class="container">
-       <h1 class="text-center" style="font-weight: 900;">WELCOME TO BLOGS</h1>
+   <div class="container" >
+       <h1 class="text-center" style="font-weight: 500;">WELCOME TO BLOGS</h1>
    </div> 
    <br>
-    <div class="card w-80">
+    <div class="card w-80" style="background-color: rgb(141, 133, 133);">
         <div class="card-body">
-            <h5 class="card-title teal-text" style='text-decoration:underline;'>Random Quotes</h5>
-            <h6 class="card-title teal-text">Author : <cite title="Source Title">{{ quotes.author }}</cite></h6>
-            <p class="card-text note note-info">{{ quotes.quote }}</p>
-            <a href="{{ quotes.permalink }}" target='_blank' class="btn btn-teal btn-sm">View Quote</a>
+            <h5 class="card-title" style='text-decoration:underline;'>Random Quotes</h5>
+            <h6 class="card-title">Author : <cite title="Source Title">{{ quotes.author }}</cite></h6>
+            <p class="card-text note note-info" >{{ quotes.quote }}</p>
+            <a href="{{ quotes.permalink }}" target='_blank' class="btn btn-dark btn-sm">View Quote</a>
         </div>
 
     </div>
@@ -27,7 +28,7 @@
         <div class='col-sm-9 col-md-10 col-lg-11'>
             
             <!-- News jumbotron -->
-            <div class="jumbotron text-center hoverable p-4">
+            <div class="jumbotron text-center hoverable p-4" style="background-color: rgb(141, 133, 133);">
 
                 <!-- Grid row -->
                 <div class="row">
@@ -59,25 +60,25 @@
                     <div class="col-md-7 text-md-left ml-3 mt-3">
 
                         <!-- Excerpt -->
-                        <a href="#!" class="teal-text">
+                        <a href="#!" class="purple-text">
                             <h6 class="h6 pb-1"><i class="fas fa-comment-alt pr-1"></i> Blog</h6>
                         </a>
 
-                        <h4 class="h4 mb-4">{{ items.title| capitalize }}</h4>
+                        <h4 class="h4 mb-4">{{ items.title}}</h4>
 
                         <p class="font-weight-normal">{{ items.blog }}</p>
-                        <p class="font-weight-normal">by <a><strong>{{ items.blogger.username }}</strong></a>, {{
+                        <p class="font-weight-normal"><strong>By:</strong> <a><strong>{{ items.blogger.username }}</strong></a> <br>{{
                             items.posted.strftime('%d-%m-%Y') }}</p>
 
-                        <a href="{{url_for('main.new_comment', blog_id=items.id)}}" class="btn btn-default btn-sm"><i
+                        <a href="{{url_for('main.new_comment', blog_id=items.id)}}" class="btn btn-secondary btn-sm"><i
                                 class="far fa-comments fa-2x"></i> <span style='font-size:14px;'>Comments</span></a>
 
                         {% if items.blogger == current_user %}
 
-                        <a href="{{url_for('main.update_blog', blog_id=items.id)}}" class="btn btn-default btn-sm"><span
+                        <a href="{{url_for('main.update_blog', blog_id=items.id)}}" class="btn btn-secondary btn-sm"><span
                                 style='font-size:14px;'>Update</span></a>
 
-                        <a href='' data-toggle="modal" data-target="#deleteModalCenter" class="btn btn-default btn-sm"><i
+                        <a href='' data-toggle="modal" data-target="#deleteModalCenter" class="btn btn-secondary btn-sm"><i
                                 class="fas fa-trash-alt fa-2x"></i> <span style='font-size:14px;'>Delete</span></a>
 
                         {% endif %}

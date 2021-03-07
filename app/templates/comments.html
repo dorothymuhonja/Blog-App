@@ -1,6 +1,7 @@
 {% include 'base.html' %}
 {% import 'bootstrap/wtf.html' as wtf %}
-
+<br>
+<br>
 {% block content %}
 <div class="container">
     {{wtf.quick_form(form)}}
@@ -11,7 +12,7 @@
 
 <div class="container">
 
-    <h2 class='text-center teal-text' style='text-decoration:underline;'>Comments</h2>
+    <h2 class='text-center purple-text' style='text-decoration:underline;'>Comments</h2>
 
     {% for items in comment[::-1] %}
 
