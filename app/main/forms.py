@@ -10,7 +10,7 @@ class BlogForm(FlaskForm):
 
 class CommentForm(FlaskForm):
     title = StringField('Comment Title', validators=[Required()])
-    blog = TextAreaField('Write a Comment')
+    comment = TextAreaField('Write a Comment')
     submit = SubmitField('submit') 
 
 class BioForm(FlaskForm):
